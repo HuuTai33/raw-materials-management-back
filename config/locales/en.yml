@@ -41,3 +41,28 @@ en:
               blank: 'cannot create raw material without category'
             supplier:
               blank: 'cannot create raw material without supplier'
+  activemodel:
+    errors:
+      models:
+        user_create:
+          attributes:
+            email:
+              blank: "email cannot be blank"
+            password:
+              blank: "password cannot be blank"
+        raw_material_create:
+          attributes:
+            name:
+              blank: "name cannot be blank"
+            category:
+              blank: "category cannot be blank"
+            supplier:
+              blank: "supplier cannot be blank"
+        raw_material_update:
+          attributes:
+            name:
+              blank: "name cannot be blank"
+            category:
+              blank: "category cannot be blank"
+            supplier:
+              blank: "supplier cannot be blank"
