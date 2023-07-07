@@ -30,4 +30,14 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        raw_material:
+          attributes:
+            name:
+              blank: 'cannot create raw material without name'
+            category:
+              blank: 'cannot create raw material without category'
+            supplier:
+              blank: 'cannot create raw material without supplier'
