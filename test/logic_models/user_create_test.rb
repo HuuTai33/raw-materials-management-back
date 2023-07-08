@@ -10,7 +10,7 @@ class UserCreateTest < ActiveSupport::TestCase
     assert_equal params[:email], user.email
   end
 
-  test 'cannot create wallet without email' do
+  test 'cannot create user without email' do
     params = {password: "password"}
 
     user = UserCreate.new(params)
@@ -19,7 +19,7 @@ class UserCreateTest < ActiveSupport::TestCase
     assert_error_message_translated(:activemodel, user, :email, :blank)
   end
 
-  test 'cannot create wallet without password' do
+  test 'cannot create user without password' do
     params = {email: "test@mail.com"}
 
     user = UserCreate.new(params)

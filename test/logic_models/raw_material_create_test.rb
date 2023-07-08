@@ -24,7 +24,7 @@ class RawMaterialCreateTest < ActiveSupport::TestCase
     assert_nil raw_material.score
   end
 
-  test 'cannot create wallet without name' do
+  test 'cannot create raw material without name' do
     params = { category: "category", supplier: 'supplier', score: 10 }
 
     raw_material = RawMaterialCreate.new(params)
@@ -33,7 +33,7 @@ class RawMaterialCreateTest < ActiveSupport::TestCase
     assert_error_message_translated(:activemodel, raw_material, :name, :blank)
   end
 
-  test 'cannot create wallet without category' do
+  test 'cannot create raw material without category' do
     params = { name: 'name', supplier: 'supplier', score: 10 }
 
     raw_material = RawMaterialCreate.new(params)
@@ -42,7 +42,7 @@ class RawMaterialCreateTest < ActiveSupport::TestCase
     assert_error_message_translated(:activemodel, raw_material, :category, :blank)
   end
 
-  test 'cannot create wallet without supplier' do
+  test 'cannot create raw material without supplier' do
     params = { name: 'name', category: "category", score: 10 }
 
     raw_material = RawMaterialCreate.new(params)
