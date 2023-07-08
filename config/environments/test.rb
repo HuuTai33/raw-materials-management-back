@@ -59,4 +59,8 @@ Rails.application.configure do
   # config.action_view.annotate_rendered_view_with_filenames = true
 
   routes.default_url_options[:host] = 'http://localhost:3000'
+
+  config.session_store :cookie_store, key: '_interslice_session'
+  config.middleware.use ActionDispatch::Cookies
+  config.middleware.use config.session_store, config.session_options
 end

@@ -3,6 +3,7 @@ require 'test_helper'
 class Api::V1::RawMaterialsControllerTest < ActionDispatch::IntegrationTest
 
   def setup
+    @user = User.create!(email: 'test@gmail.com', password: 'password')
   end
 
   test 'get raw materials route exist' do
@@ -44,6 +45,7 @@ class Api::V1::RawMaterialsControllerTest < ActionDispatch::IntegrationTest
     RawMaterial.create!({ name: 'name1', category: "category1", supplier: 'supplier1', score: 10 })
     RawMaterial.create!({ name: 'name2', category: "category2", supplier: 'supplier2', score: 20 })
 
+    sign_in(@user)
     get "/api/v1/raw_materials"
     response = JSON.parse(body)
 
@@ -54,6 +56,7 @@ class Api::V1::RawMaterialsControllerTest < ActionDispatch::IntegrationTest
   test 'can get an raw material' do
     raw_material = RawMaterial.create!({ name: 'name1', category: "category1", supplier: 'supplier1', score: 10 })
 
+    sign_in(@user)
     get "/api/v1/raw_materials/#{raw_material.id}"
     response = JSON.parse(body)
 
@@ -67,6 +70,7 @@ class Api::V1::RawMaterialsControllerTest < ActionDispatch::IntegrationTest
   test 'can create an raw material' do
     params = { name: 'name', category: "category", supplier: 'supplier', score: 10 }
 
+    sign_in(@user)
     post "/api/v1/raw_materials", params: params
     response = JSON.parse(body)
 
@@ -82,6 +86,7 @@ class Api::V1::RawMaterialsControllerTest < ActionDispatch::IntegrationTest
     raw_material = RawMaterial.create!({ name: 'name1', category: "category1", supplier: 'supplier1', score: 10 })
     params = { name: 'update_name', category: "update_category", supplier: 'update_supplier', score: 20 }
 
+    sign_in(@user)
     put "/api/v1/raw_materials/#{raw_material.id}", params: params
     response = JSON.parse(body)
 
@@ -95,11 +100,18 @@ class Api::V1::RawMaterialsControllerTest < ActionDispatch::IntegrationTest
   test 'can delete an raw material' do
     raw_material = RawMaterial.create!({ name: 'name1', category: "category1", supplier: 'supplier1', score: 10 })
 
+    sign_in(@user)
     delete "/api/v1/raw_materials/#{raw_material.id}"
     response = JSON.parse(body)
 
     assert_equal 200, status
     assert_equal "ok", response["status"]
+  end
+
+  test 'fails if not auth' do
+    get "/api/v1/raw_materials"
+
+    assert 401, status
   end
 
 end

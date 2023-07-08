@@ -1,4 +1,5 @@
 class Api::V1::RawMaterialsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     raw_materials = RawMaterial.all.order(created_at: :desc)

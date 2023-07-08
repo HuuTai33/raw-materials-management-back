@@ -64,4 +64,8 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   routes.default_url_options[:host] = 'http://localhost:3000'
+
+  config.session_store :cookie_store, key: '_interslice_session'
+  config.middleware.use ActionDispatch::Cookies
+  config.middleware.use config.session_store, config.session_options
 end
