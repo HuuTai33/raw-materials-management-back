@@ -1,9 +1,10 @@
 class Api::V1::RawMaterialsController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
 
   def index
-    raw_materials = RawMaterial.all.order(created_at: :desc)
-    render json: raw_materials
+    finder = RawMaterial.all.order(created_at: :desc)
+    pagy, raw_materials = pagy(finder, page: params[:page])
+    render json: { rawmaterials: raw_materials, page: pagy_metadata(pagy) }
   end
 
   def show
