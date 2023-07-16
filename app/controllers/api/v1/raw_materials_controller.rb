@@ -3,6 +3,7 @@ class Api::V1::RawMaterialsController < ApplicationController
 
   def index
     finder = RawMaterial.all.order(created_at: :desc)
+    finder = finder.where('name like ?', '%' + params[:name] + '%') unless params[:name].nil?
     pagy, raw_materials = pagy(finder, page: params[:page])
     render json: { rawmaterials: raw_materials, page: pagy_metadata(pagy) }
   end
