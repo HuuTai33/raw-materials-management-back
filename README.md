@@ -1,16 +1,16 @@
-# Raw Materials Management - Front
+# Raw Materials Management - Back
 
 Launch project in local :
 
 * Ruby version
-  * This project use ruby 3.0.0
+  * This project use `ruby 3.0.0`
 * System dependencies
-  * bundle install
+  * `bundle install`
 * Database creation
-  * rails db:create
+  * `rails db:create`
 * Database initialization
-  * rails db:migrate
+  * `rails db:migrate`
 * Run the tests
-  * rails test
+  * `rails test`
 * Run the project
-    * rails s
+    * `rails s` (will run on `http://localhost:3000/`)
