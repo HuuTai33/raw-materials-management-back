@@ -1,24 +1,16 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+Launch project in local :
 
 * Ruby version
-
+  * This project use ruby 3.0.0
 * System dependencies
-
-* Configuration
-
+  * bundle install
 * Database creation
-
+  * rails db:create
 * Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  * rails db:migrate
+* Run the tests
+  * rails test
+* Run the project
+    * rails s
